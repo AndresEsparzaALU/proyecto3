@@ -15,33 +15,12 @@ use App\Http\Controllers\CatalogController;
 |
 */
 
-/* Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('encuentro', function () {
-    return view('encuentro');
-});
 
-Route::get('contact', function () {
-    return view('contact');
-});
 
-Route::get('about', function () {
-    return view('about');
-});
-
-Route::get('thingsicando', function() {
-    return view('thingsicando');
-});
-Route::get('accomplishments', function() {
-    return view('accomplishments');
-}); */
-
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 Route::get('/',  [HomeController::class, 'getHome']);
-
-Route::get('login', function () {
-    return view('auth.login');
-});
 
 Route::get('productos', [CatalogController::class, 'getIndex']);
 
@@ -52,3 +31,4 @@ Route::get('productos/create', [CatalogController::class, 'getCreate']);
 Route::get('productos/edit/{id}', [CatalogController::class, 'getEdit']);
 
 Route::post('productos/create', [CatalogController::class, 'store']);
+require __DIR__.'/auth.php';
